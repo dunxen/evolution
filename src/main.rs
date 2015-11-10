@@ -3,12 +3,8 @@
 extern crate rand;
 use rand::Rng;
 
-fn rand_string(size: u32) -> String {
-    let mut rand_string = String::with_capacity(size as usize);
-    for _ in 0..size {
-        rand_string = rand_string + &(rand::thread_rng().gen_range(32, 123) as u8 as char).to_string();
-    }
-    rand_string
+fn rand_string(size: usize) -> String {
+    return rand::thread_rng().gen_ascii_chars().take(size).collect();
 }
 
 fn crossover(chrome1: Chromosome, chrome2: Chromosome, cross_prob: f32, solution: &str) -> Chromosome {
@@ -51,10 +47,10 @@ struct Chromosome {
 
 impl Chromosome {
     fn new(solution: String) -> Chromosome {
-        let random_string = &rand_string(solution.len() as u32);
+        let random_string = rand_string(solution.len());
         Chromosome {
-            code: random_string.to_string(),
-            cost_score: cost_function(random_string, &solution),
+            code: random_string.clone(),
+            cost_score: cost_function(&random_string, &solution),
             solution: solution,
         }
     }
