@@ -1,0 +1,7 @@
+[package]
+name = "ga"
+version = "0.1.0"
+authors = ["duncan"]
+[dependencies]
+rand = "0.3"
+num = "0.1.27"
