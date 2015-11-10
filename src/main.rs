@@ -77,7 +77,7 @@ impl Chromosome {
 
 
 fn main() {
-    let solution = "The quick brown fox jumps over the lazy dog.".to_string();
+    let solution = "Tom looks tired".to_string();
     let pop_size = 160; // Must be greater than 1
     let max_pop = pop_size * 1;
     let mut_prob = 0.3;
