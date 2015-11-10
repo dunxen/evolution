@@ -28,13 +28,13 @@ fn crossover(chrome1: Chromosome, chrome2: Chromosome, cross_prob: f32, solution
 
 
 fn cost_function(code: &str, solution: &str) -> u32 {
-    let chars: Vec<char> = solution.to_string().chars().collect();
-    let code_chars: Vec<char> = code.to_string().chars().collect();
+    let chars = solution.as_bytes();
+    let code_chars = code.as_bytes();
     let mut cost: u32 = 0;
     for i in 0..chars.len() {
-        cost += ((chars[i] as u8 as i32) - (code_chars[i] as u8 as i32)).abs() as u32;
+        cost += ((chars[i] as i32) - (code_chars[i] as i32)).abs() as u32;
     }
-    cost
+    return cost;
 }
 
 
