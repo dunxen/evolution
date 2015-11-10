@@ -80,7 +80,6 @@ impl Chromosome {
 
 fn main() {
     let solution = "The quick brown fox jumps over the lazy dog.".to_string();
-    let gen_number = 600;
     let pop_size = 30; // Must be greater than 1
     let max_pop = pop_size * 5;
     let mut_prob = 0.4;
