@@ -2,6 +2,8 @@
 // Author: Duncan Dean
 extern crate rand;
 use rand::Rng;
+extern crate time;
+use time::PreciseTime;
 
 fn rand_string(size: usize) -> String {
     return rand::thread_rng().gen_ascii_chars().take(size).collect();
@@ -76,17 +78,17 @@ impl Chromosome {
 
 fn main() {
     let solution = "The quick brown fox jumps over the lazy dog.".to_string();
-    let pop_size = 30; // Must be greater than 1
-    let max_pop = pop_size * 5;
-    let mut_prob = 0.4;
+    let pop_size = 160; // Must be greater than 1
+    let max_pop = pop_size * 1;
+    let mut_prob = 0.3;
     let kill_constant = 0.45;
-    let cross_prob = 0.6;
+    let cross_prob = 0.5;
     let mut population = Vec::new();
 
     // Initialize population
     for i in 0..pop_size {
         population.push(Chromosome::new(solution.to_string()));
-        println!("{}, cost: {}", population[i].code, population[i].cost_score);
+        //println!("{}, cost: {}", population[i].code, population[i].cost_score);
     }
 
 
@@ -94,6 +96,9 @@ fn main() {
     let mut winner: Chromosome = population[0].clone();
     // Step generation
     let mut j = 1;
+
+    let start = PreciseTime::now();
+
     while  winner.cost_score != 0 {
 
         // Mutations
@@ -120,13 +125,14 @@ fn main() {
 
         population.sort_by(|ref a, ref b| a.cost_score.cmp(&b.cost_score));
         winner = population[0].clone();
-        println!("\nGeneration: {}\nString: {}\nCost: {}\n", j, winner.code, winner.cost_score);
+        //println!("\nGeneration: {}\nString: {}\nCost: {}\n", j, winner.code, winner.cost_score);
 
         j += 1;
 
-
-
     }
+
+    let end = PreciseTime::now();
+    println!("Benchmark Time: {}", start.to(end));
 
 
 }

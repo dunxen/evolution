@@ -5,3 +5,4 @@ authors = ["duncan"]
 [dependencies]
 rand = "0.3"
 num = "0.1.27"
+time = "0.1"
