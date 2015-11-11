@@ -60,16 +60,12 @@ impl Chromosome {
     fn mutate(&mut self, mut_prob:f64) -> Chromosome {
         if rand::thread_rng().gen_range::<f64>(0.0, 1.0) <= mut_prob {
             let rand_index = rand::thread_rng().gen_range(0, self.code.len());
-            let mut new_code_vec: Vec<char> = self.code.chars().collect();
-            new_code_vec[rand_index] = rand::thread_rng().gen_range(32, 123) as u8 as char;
-            self.code = new_code_vec.iter().fold("".to_string(), |acc, s| acc + &s.to_string());
+            let mut code_vec = self.code.clone().into_bytes();
+            code_vec[rand_index] = rand::thread_rng().gen_range(32, 123) as u8;
+            self.code = String::from_utf8(code_vec).unwrap();
             self.cost_score = cost_function(&self.code, &self.solution);
-            self.clone()
-
-        } else {
-            self.clone()
         }
-
+        self.clone()
     }
 
 
