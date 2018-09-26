@@ -1,12 +1,13 @@
 // Genetic Algorithm for convergence to a given string
 // Author: Duncan Dean
 extern crate rand;
-use rand::Rng;
+use rand::{thread_rng, Rng};
+use rand::distributions::{Alphanumeric};
 extern crate time;
 use time::PreciseTime;
 
 fn rand_string(size: usize) -> String {
-    return rand::thread_rng().gen_ascii_chars().take(size).collect();
+    return thread_rng().sample_iter(&Alphanumeric).take(size).collect();
 }
 
 fn crossover(chrome1: Chromosome, chrome2: Chromosome, cross_prob: f32, solution: &str) -> Chromosome {
@@ -82,7 +83,7 @@ fn main() {
     let mut population = Vec::new();
 
     // Initialize population
-    for i in 0..pop_size {
+    for _i in 0..pop_size {
         population.push(Chromosome::new(solution.to_string()));
         //println!("{}, cost: {}", population[i].code, population[i].cost_score);
     }
@@ -91,7 +92,7 @@ fn main() {
     population.sort_by(|ref a, ref b| a.cost_score.cmp(&b.cost_score));
     let mut winner: Chromosome = population[0].clone();
     // Step generation
-    let mut j = 1;
+    let mut _j = 1;
 
     let start = PreciseTime::now();
 
@@ -123,7 +124,7 @@ fn main() {
         winner = population[0].clone();
         //println!("\nGeneration: {}\nString: {}\nCost: {}\n", j, winner.code, winner.cost_score);
 
-        j += 1;
+        _j += 1;
 
     }
 
