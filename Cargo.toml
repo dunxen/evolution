@@ -1,5 +1,5 @@
 [package]
-name = "ga"
+name = "evolution"
 version = "0.1.0"
 authors = ["duncan"]
 [dependencies]
