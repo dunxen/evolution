@@ -3,6 +3,6 @@ name = "ga"
 version = "0.1.0"
 authors = ["duncan"]
 [dependencies]
-rand = "0.3"
-num = "0.1.27"
-time = "0.1"
+rand = "0.5.5"
+num = "0.2.0"
+time = "0.1.40"
