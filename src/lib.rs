@@ -1,10 +1,62 @@
-// Genetic Algorithm for convergence to a given string
-// Author: Duncan Dean
+// Copyright (c) 2018 Duncan Dean, Gökberk Yaltıraklı
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+
 extern crate rand;
 use rand::{thread_rng, Rng};
 use rand::distributions::{Alphanumeric};
 extern crate time;
 use time::PreciseTime;
+
+
+pub struct Chromosome<T> {
+    permutables: T[],
+    cost: ,
+    distribution: ,
+    cost_function: 
+}
+
+impl Chromosome<T> {
+    fn permute(self) {
+
+    }
+
+    fn compute_cost(self) {
+        self.cost_function.compute(self);
+    }
+}
+
+pub struct CostFunction {
+
+}
+
+
+pub struct GeneticAlgorithm {
+    population_size: usize,
+    crossover_probability: f32,
+    mutation_rate: f32,
+    cost_function: CostFunction,
+    iterations: u32,
+
+}
+
+
 
 fn rand_string(size: usize) -> String {
     return thread_rng().sample_iter(&Alphanumeric).take(size).collect();
